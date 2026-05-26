@@ -32,7 +32,7 @@ From PPO to AMP to Diffusion MoE - Action Generation on Allegro Hand
 ├── diffusion/ # Diffusion 模型相关代码
 ├── replay_traj.py # 回放.npy轨迹文件
 ├── compare_checkpoints.py # 多checkpoint数据对比
-└── 图片文件/ # 训练曲线、结果截图
+└── 图片视频文件/ # 训练曲线、结果截图
 ├── ppo train mean reward.png # PPO训练奖励曲线
 ├── ppo consecutive successes.png # PPO连续成功率曲线
 ├── ppo loss_entropy.png # PPO熵损失
@@ -40,6 +40,11 @@ From PPO to AMP to Diffusion MoE - Action Generation on Allegro Hand
 ├── diffusion_loss.png # Diffusion损失曲线
 ├── diffusion_loss多轨迹扩散.png # 多轨迹Diffusion损失
 ├── generated_actions.png # 生成动作可视化
+├── generated action多轨迹扩散.png # 多轨迹生成动作可视化
+├── MoE_router1 # MoE路由结果
+├── MoE router2.png # MoE路由可视化
+├── MoE_loss1.png # MoE损失曲线
+├── ppomodel27500.mp4 # 生成动作可视化
 ├── generated action多轨迹扩散.png # 多轨迹生成动作可视化
 ├── MoE_router1 # MoE路由结果
 ├── MoE router2.png # MoE路由可视化
@@ -62,16 +67,11 @@ From PPO to AMP to Diffusion MoE - Action Generation on Allegro Hand
 
 | 视频文件 | 说明 |
 |:--------|:-----|
-| `ppomodel27500.mp4` | PPO model_27500 运行效果（前/右/上三视角） |
+| `ppomodel27500.mp4` | PPO model_27500 运行效果 |
 | `AMPmodel27500.mp4` | AMP 训练结果 |
-| `AMPstd发散model27500.mp4` | AMP 训练（std 发散情况） |
 | `MoE初始结果.mp4` | MoE 模型初始结果 |
 | `单轨迹diffusion.mp4` | 单轨迹 Diffusion 模型结果 |
 | `多轨迹diffusion视频.mp4` | 多轨迹 Diffusion 模型结果 |
-
-> 📁 **百度网盘链接**：[待上传]
->
-> 提取码：待更新
 
 ### 方法对比
 
@@ -104,10 +104,10 @@ python rsl_rl/play.py \
     --num_envs 1 \
     --load_run "allegro_hand/训练文件夹" \
     --checkpoint "model_27500"
-2. 回放演示轨迹
+### 2. 回放演示轨迹
 BASH
 python replay_traj.py
-3. AMP 训练
+### 3. AMP 训练
 BASH
 python rsl_rl/amp_train_from_ppo_data.py \
     --task Isaac-Repose-Cube-Allegro-Direct-v0 \
@@ -116,7 +116,7 @@ python rsl_rl/amp_train_from_ppo_data.py \
     --ref_data PPO转换的用作AMP训练的轨迹/demo_traj_27500.npy \
     --amp_beta 0.2 \
     --headless
-参考
+## 参考
 Isaac Lab
 RSL-RL
 Allegro Hand
